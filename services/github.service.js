@@ -1,9 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-const Fastq = require("fastq");
-const { Github: GithubАdapter } = require("../adapter/github.adapter");
+const Fastq = require('fastq');
+const { Github: GithubАdapter } = require('../adapter/github.adapter');
 
 // TODO refactor add constants
-const STATISTICS_TYPE = { year: "year", all: "all" };
+const STATISTICS_TYPE = { year: 'year', all: 'all' };
 
 class Github {
  async getTopRepositories({ repo, owner, type }) {
@@ -84,8 +84,8 @@ class Github {
    repos.forEach((obj) => {
     const url = new URL(obj.url);
 
-    const owner = url.pathname.split("/")[1];
-    const repositoryName = url.pathname.split("/")[2];
+    const owner = url.pathname.split('/')[1];
+    const repositoryName = url.pathname.split('/')[2];
     // TODO refactor
     if (repositoryName != repo) {
      const fullName = `${owner}_${repositoryName}`;
@@ -151,14 +151,14 @@ class Github {
 
   while (true) {
    let page = 0;
-   const data = await GithubAdapter.getContributors({ page, repo, owner, type: "all" });
+   const data = await GithubAdapter.getContributors({ page, repo, owner, type: 'all' });
    contributors.push(...data);
    if (data.length == 0 || data.length < 100) break;
    page++;
   }
 
   return contributors.filter((_user) => {
-   return _user.type == "User";
+   return _user.type == 'User';
   });
  }
 }
