@@ -154,11 +154,10 @@ class Github {
   const contributors = [];
 
   while (true) {
-   page = 0;
+   page += 1;
    const data = await GithubAdapter.getContributors({ page, repo, owner, type: 'all' });
    contributors.push(...data);
    if (data.length === 0 || data.length < 100) break;
-   page += 1;
   }
 
   return contributors.filter((_user) => {
