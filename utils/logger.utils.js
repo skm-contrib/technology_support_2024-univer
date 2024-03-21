@@ -53,7 +53,7 @@ const devConfig = {
 };
 
 const getFilePath = () => {
- const directoryPath = './logs';
+ const directoryPath = './logs/';
  const dateLog = new Date().toISOString().slice(0, 10);
  const filePath = path.join(directoryPath, `log-file-${dateLog}.log`);
  return filePath;
