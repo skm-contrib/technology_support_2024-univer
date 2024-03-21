@@ -19,8 +19,9 @@ const gotClient = got.extend({
   calculateDelay: (response) => {
    if (RETRY_STATUS_CODES.includes(response.statusCode)) {
     return 20000 * response.attemptCount;
+   } else {
+    return 0;
    }
-   return 0;
   },
  },
 });
