@@ -1,7 +1,8 @@
 const path = require('node:path');
+
 const pino = require('pino-http');
 
-const isPrоd = process.env.NODE_ENV == 'production';
+const isProd = process.env.NODE_ENV === 'production';
 
 const customLogLevel = (req, res, err) => {
  if (res.statusCode >= 400 && res.statusCode < 500) {
