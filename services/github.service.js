@@ -161,7 +161,7 @@ class Github {
   }
 
   return contributors.filter((_user) => {
-   return _user.type == 'User';
+   return _user.type === 'User';
   });
  }
 }
