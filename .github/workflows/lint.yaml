@@ -1,0 +1,25 @@
+name: Lint Code Base
+
+on:
+  push:
+    branches: [ main, laboratorna_3_fix_Petrun ]
+  pull_request:
+    branches: [ main, laboratorna_3_fix_Petrun ]
+
+jobs:
+  build:
+    name: Run ESLint
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run linter
+      run: npm run lint
