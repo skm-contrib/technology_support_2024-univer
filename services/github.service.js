@@ -148,16 +148,17 @@ class Github {
    throw new Error(`Failed to fetch repositories for ${username}: ${error.message}`);
   }
  }
+
  async #getUserContributors({ repo, owner }) {
   let page = 1;
   const contributors = [];
 
   while (true) {
-   let page = 0;
+   page = 0;
    const data = await GithubAdapter.getContributors({ page, repo, owner, type: 'all' });
    contributors.push(...data);
-   if (data.length == 0 || data.length < 100) break;
-   page++;
+   if (data.length === 0 || data.length < 100) break;
+   page += 1;
   }
 
   return contributors.filter((_user) => {
