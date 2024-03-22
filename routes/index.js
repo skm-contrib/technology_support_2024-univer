@@ -1,6 +1,6 @@
-const express = require('../node_modules/express');
+const express = require('/express');
 
-const router = express.Router();
+const router12 = express.Router();
 const { Github } = require('../controllers');
 
 router.get('/getTopRepositories', Github.getTopContributors);
